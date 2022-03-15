@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class DocumentDB {
     public void createDB(){}
     public void listAllDB(){}
