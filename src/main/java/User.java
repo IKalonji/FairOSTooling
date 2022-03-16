@@ -1,6 +1,20 @@
-/*
-
+/**
+ * User class handles all aspects relating to the user.
+ * Class should be instantiated and user is to be signed up
+ * or logged in thereafter. All other classes depend on
+ * the DFS cookie which is returned on signup for them to work.
+ *
+ * Methods return a hashmap with the result
+ *
+ * instantiation:
+ *
+ * User user = new User();
+ *
+ * Usage:
+ *
+ * HashMap signedIn = user.signupUser("username", "strongpassword", "mnemonic")
  */
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
@@ -20,7 +34,17 @@ public class User {
         this.requestBuilder = HttpRequest.newBuilder();
     }
 
-    public HashMap<String, String> signupUser(String username, String password, String mnemonic)
+    /**
+     * Signup user with mnemonic
+     * @param username
+     * @param password
+     * @param mnemonic
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
+    public HashMap<String, String> signupUserWithMnemonic(String username, String password, String mnemonic)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("username", username);
@@ -41,6 +65,15 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Signup user without mnemonic
+     * @param username
+     * @param password
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> signupUser(String username, String password)
         throws IOException, InterruptedException, ParseException {
 
@@ -61,6 +94,15 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Login user
+     * @param username
+     * @param password
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> loginUser(String username, String password)
         throws IOException, InterruptedException, ParseException {
 
@@ -82,6 +124,16 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Import user with eth address
+     * @param username
+     * @param password
+     * @param address
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> importUserWithAddress(String username, String password, String address)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
@@ -103,6 +155,16 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Import user with mnemonic
+     * @param username
+     * @param password
+     * @param mnemonic
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> importUserWithMnemonic(String username, String password, String mnemonic)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
@@ -124,6 +186,15 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Check if user is signed in
+     * @param username
+     * @param dfs_cookie
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> isUserLoggedIn(String username, String dfs_cookie)
         throws IOException, InterruptedException, ParseException {
 
@@ -143,6 +214,14 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Logout the current user
+     * @param dfs_cookie
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> logoutUser(String dfs_cookie)
         throws IOException, InterruptedException, ParseException {
 
@@ -164,6 +243,14 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Export the user
+     * @param dfs_cookie
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> exportUser(String dfs_cookie)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
@@ -184,6 +271,15 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Delete user
+     * @param password
+     * @param dfs_cookie
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> deleteUser(String password, String dfs_cookie)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
@@ -204,6 +300,14 @@ public class User {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * User Stats
+     * @param dfs_cookie
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> userStat(String dfs_cookie)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();

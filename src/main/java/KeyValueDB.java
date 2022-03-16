@@ -1,6 +1,21 @@
+/**
+ * KeyValueDB class handles all aspects relating to the management of the Key-Value store.
+ * Class should be instantiated with
+ * the DFS cookie which is returned on signup for them to work.
+ *
+ * Methods return a hashmap with the result
+ *
+ * instantiation:
+ *
+ * KeyValueDB kvDB = new KeyValueDB("cookie");
+ *
+ * Usage:
+ *
+ * HashMap newKvStore = kvDB.newTable("podName", "tablename", "indexType")
+ */
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -14,12 +29,26 @@ public class KeyValueDB {
     HttpClient client;
     HttpRequest.Builder requestBuilder;
 
+    /**
+     * KeyValueDB is instantiated with cookie
+     * @param dfs_cookie
+     */
     public KeyValueDB(String dfs_cookie){
         this.dfs_cookie = dfs_cookie;
         this.client = HttpClient.newHttpClient();
         this.requestBuilder = HttpRequest.newBuilder();
     }
 
+    /**
+     * Create new table
+     * @param podName
+     * @param table_name
+     * @param indexType
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> newTable(String podName, String table_name, String indexType)
             throws IOException, InterruptedException, ParseException {
 
@@ -41,6 +70,14 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * List all tables
+     * @param podName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> listTables(String podName)
         throws IOException, InterruptedException, ParseException {
 
@@ -57,6 +94,15 @@ public class KeyValueDB {
             return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Open the required table
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> openTable(String podName, String tableName)
             throws IOException, InterruptedException, ParseException {
 
@@ -77,6 +123,15 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Count tables
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> countTable(String podName, String tableName)
         throws IOException, InterruptedException, ParseException {
 
@@ -97,6 +152,15 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Delete the table
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> deleteTable(String podName, String tableName)
         throws IOException, InterruptedException, ParseException {
 
@@ -117,6 +181,17 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Put the key value pair into the table
+     * @param podName
+     * @param table_name
+     * @param key
+     * @param value
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> putKeyValue(String podName, String table_name, String key, String value)
         throws IOException, InterruptedException, ParseException {
 
@@ -139,6 +214,16 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Get value form teh key
+     * @param podName
+     * @param table_name
+     * @param key
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> getValue(String podName, String table_name, String key)
         throws IOException, InterruptedException, ParseException {
 
@@ -156,6 +241,16 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Delete value based on the key
+     * @param podName
+     * @param table_name
+     * @param key
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> deleteValue(String podName, String table_name, String key)
         throws IOException, InterruptedException, ParseException {
 
@@ -177,6 +272,18 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Seek the required key
+     * @param podName
+     * @param table_name
+     * @param start
+     * @param end
+     * @param limit
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> seekKey(String podName, String table_name, String start, String end, int limit)
         throws IOException, InterruptedException, ParseException {
 
@@ -200,6 +307,15 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Get the next value in the table
+     * @param podName
+     * @param table_name
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> getNext(String podName, String table_name)
         throws IOException, InterruptedException, ParseException {
 
@@ -217,6 +333,15 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Load CSV from the table
+     * @param podName
+     * @param table_name
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> loadCSV(String podName, String table_name)
         throws IOException, InterruptedException, ParseException {
 
@@ -237,6 +362,16 @@ public class KeyValueDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Check if the said key is present
+     * @param podName
+     * @param table_name
+     * @param key
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> isKeyPresent(String podName, String table_name, String key)
             throws IOException, InterruptedException, ParseException {
 

@@ -1,6 +1,21 @@
+/**
+ * DocumentDB class handles all aspects relating to the management of the Document store.
+ * Class should be instantiated with
+ * the DFS cookie which is returned on signup for them to work.
+ *
+ * Methods return a hashmap with the result
+ *
+ * instantiation:
+ *
+ * DocumentDB docDB = new DocumentDB("cookie");
+ *
+ * Usage e.g:
+ *
+ * HashMap newDocDB = DocumentDB.createDB("podName", "tablename", "DocFieldIndex")
+ */
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -14,13 +29,26 @@ public class DocumentDB {
     private HttpClient client;
     private HttpRequest.Builder requestBuilder;
 
+    /**
+     * DocumentDB is instantiated with cookie
+     * @param dfs_cookie
+     */
     public DocumentDB(String dfs_cookie){
         this.dfs_cookie = dfs_cookie;
         this.client = HttpClient.newHttpClient();
         this.requestBuilder = HttpRequest.newBuilder();
     }
 
-
+    /**
+     * Create new database
+     * @param podName
+     * @param tableName
+     * @param si
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> createDB(String podName, String tableName, String si)
             throws IOException, InterruptedException, ParseException {
 
@@ -42,6 +70,14 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * List all database
+     * @param podName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> listAllDB(String podName)
             throws IOException, InterruptedException, ParseException {
 
@@ -58,6 +94,15 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Open database
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> openDB(String podName, String tableName)
             throws IOException, InterruptedException, ParseException {
 
@@ -78,6 +123,15 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Count Database
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> countDB(String podName, String tableName)
             throws IOException, InterruptedException, ParseException {
 
@@ -98,6 +152,15 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Delete Database
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> deleteDB(String podName, String tableName)
             throws IOException, InterruptedException, ParseException {
 
@@ -118,6 +181,16 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Find documents
+     * @param podName
+     * @param tableName
+     * @param expr
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> findDocuments(String podName, String tableName, String expr)
             throws IOException, InterruptedException, ParseException {
 
@@ -137,6 +210,15 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Load JSON from table
+     * @param podName
+     * @param tableName
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> loadJson(String podName, String tableName)
             throws IOException, InterruptedException, ParseException {
 
@@ -158,6 +240,16 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Index JSON
+     * @param podName
+     * @param tableName
+     * @param file
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> indexJson(String podName, String tableName, String file)
         throws IOException, InterruptedException, ParseException {
 
@@ -180,6 +272,16 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Insert document to DB
+     * @param podName
+     * @param tableName
+     * @param doc
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> putDocument(String podName, String tableName, String doc)
             throws IOException, InterruptedException, ParseException {
 
@@ -201,6 +303,16 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Get Document
+     * @param podName
+     * @param tableName
+     * @param id
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> getDocument(String podName, String tableName, String id)
             throws IOException, InterruptedException, ParseException {
 
@@ -220,6 +332,16 @@ public class DocumentDB {
         return ResponseHandler.handleResponse(response);
     }
 
+    /**
+     * Delete document
+     * @param podName
+     * @param tableName
+     * @param id
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws ParseException
+     */
     public HashMap<String, String> deleteDocument(String podName, String tableName, String id)
             throws IOException, InterruptedException, ParseException {
 
