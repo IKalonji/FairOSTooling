@@ -251,4 +251,4 @@ Project Link: [https://github.com/IKalonji/FairOSTooling](https://github.com/IKa
 [license-url]: https://github.com/IKalonji/FairOSTooling/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/issa-kalonji-b301851ba/
-[product-screenshot]: images/screenshot1.png
+[product-screenshot]: images/screenshot1.PNG
