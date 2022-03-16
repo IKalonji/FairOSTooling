@@ -35,7 +35,8 @@ public class FileSystem {
         this.requestBuilder = HttpRequest.newBuilder();
     }
 
-    public HashMap<String, String> fsMakeDirectory(String podName, String dirPath) throws IOException, InterruptedException, ParseException {
+    public HashMap<String, String> fsMakeDirectory(String podName, String dirPath)
+        throws IOException, InterruptedException, ParseException {
 
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
@@ -56,7 +57,8 @@ public class FileSystem {
         return ResponseHandler.handleResponse(response);
     }
 
-    public HashMap<String, String> fsRemoveDirectory(String podName, String dirPath) throws IOException, InterruptedException, ParseException {
+    public HashMap<String, String> fsRemoveDirectory(String podName, String dirPath)
+        throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
         body.put("dir_path", dirPath);
@@ -75,7 +77,9 @@ public class FileSystem {
 
         return ResponseHandler.handleResponse(response);
     }
-    public HashMap<String, String> fsListDirectory(String podName, String dirPath) throws IOException, InterruptedException, ParseException {
+
+    public HashMap<String, String> fsListDirectory(String podName, String dirPath)
+        throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
         body.put("dir_path", dirPath);
@@ -94,7 +98,9 @@ public class FileSystem {
 
         return ResponseHandler.handleResponse(response);
     }
-    public HashMap<String, String> fsStatDirectory(String podName, String dirPath) throws IOException, InterruptedException, ParseException {
+
+    public HashMap<String, String> fsStatDirectory(String podName, String dirPath)
+        throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
         body.put("dir_path", dirPath);
@@ -113,7 +119,9 @@ public class FileSystem {
 
         return ResponseHandler.handleResponse(response);
     }
-    public HashMap<String, String> fsIsDirectoryPresent(String podName, String dirPath) throws IOException, InterruptedException, ParseException {
+
+    public HashMap<String, String> fsIsDirectoryPresent(String podName, String dirPath)
+        throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
         body.put("dir_path", dirPath);
@@ -133,7 +141,8 @@ public class FileSystem {
         return ResponseHandler.handleResponse(response);
     }
 
-    public HashMap<String, String> fsUploadFile(String podName, String dirName, String blockSize, Path filePath) throws IOException, InterruptedException, ParseException {
+    public HashMap<String, String> fsUploadFile(String podName, String dirName, String blockSize, Path filePath)
+        throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
         body.put("pod_dir", dirName);
@@ -178,6 +187,7 @@ public class FileSystem {
 
         return ResponseHandler.handleFileResponse(response);
     }
+
     public HashMap<String, String> fsShareFile(String podName, String dirPath, String receiverAddr)
         throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
@@ -200,7 +210,8 @@ public class FileSystem {
         return ResponseHandler.handleResponse(response);
     }
 
-    public HashMap<String, String> fsReceiveFile(String podName, String dirPath, String sharingRef) throws IOException, InterruptedException, ParseException {
+    public HashMap<String, String> fsReceiveFile(String podName, String dirPath, String sharingRef)
+        throws IOException, InterruptedException, ParseException {
         JSONObject body = new JSONObject();
         body.put("pod_name", podName);
         body.put("dir_path", dirPath);
