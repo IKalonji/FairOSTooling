@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/IKalonji/FairOSTooling/blob/main/README.md)
+[![Product Name Screen Shot][product-screenshot]]
 
 Swarm decentralized, peer-to-peer storage opens up new opportunities for establishing a self-sovereign cloud. It also brings about a paradigm shift on how to use such storage.Layer 2 solutions on top of Swarm, such as FairOS, make additional features available, leading towards unlocking a fairer data economy.
 
@@ -98,17 +98,13 @@ Follow the steps below on how to run the project.
 
 Please install the below required software in order to run the project. (Follow link for installation guide)
 
-* FairOS-dfs server
-  [DFS-server](https://nodejs.org/about/releases)
+* [DFS-server](https://nodejs.org/about/releases)
 
-* JDK
-  [JDK-11](https://www.oracle.com/java/technologies/downloads/)
+* [JDK-11](https://www.oracle.com/java/technologies/downloads/)
 
-* Maven
-  [Maven](https://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 
-* WSL 2
-  [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install)
+* [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install)
 
 
 ### Installation
